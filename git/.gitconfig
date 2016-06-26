@@ -5,7 +5,6 @@
 	ui = true
 [alias]
 	a = add
-	co = checkout
 	c = commit -m 
 	diff = --no-pager diff
 	s = !~/bin/gitstatus.sh
