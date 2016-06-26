@@ -1,6 +1,6 @@
 [user]
-	email = robert@digitalasset.com
-	name = Robert Fajta
+	email = k.sami.mohammed@gmail.com
+	name = Khaled Sami
 [color]
 	ui = true
 [alias]
@@ -25,8 +25,8 @@
 	r = !~/bin/gitreset.sh -s
 
 [core]
-	editor = emacs
-	excludesfile = /Users/robertfa/.gitignore_global
+	editor = sublime
+	excludesfile = /Users/KhaledSami/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

@@ -52,20 +52,12 @@ printPrompt() {
     fi
   }
 
-  # # specify prompt background color per user, not used currently
-  # declare -A PROMPT_BG_COLORS
-  # PROMPT_BG_COLORS=(
-  #   [robertfa]=""
-  #   [root]=${BG_RED}
-  #   [default]=""
-  # )
-  # COLOR_PROMPT_BG='$(getValue PROMPT_BG_COLORS ${USER})'
   COLOR_PROMPT_BG=""
 
   # the <user>
   COMMAND_USER='${USER}'
   declare -A COLORS_USER=(
-    [robertfa]=${FG_GREEN}
+    [KhaledSami]=${FG_GREEN}
     [jenkins]=${FG_PURPLE}
     [default]=${FG_CYAN}
   )
@@ -79,15 +71,15 @@ printPrompt() {
   # specify color for for each <host> plus for the 'default'
   declare -A COLORS_HOST=(
     [localhost]=${FG_CYAN}
-    [RobertFajtasMBP]=${FG_CYAN}
-    [Robert-Fajtas-MacBook-Pro.local]=${FG_CYAN}
+    [KhaledSami]=${FG_CYAN}
+    [KhaledSami-MacBook-Air.local]=${FG_CYAN}
     [default]=${FG_LIGHT_PURPLE}
   )
   # abbreviation of each <host> for the tab name of konsole, plus ['default']=KEY
   declare -A HOST_ABBREVIATION=(
     [localhost]=l
-    [Robert-Fajtas-MacBook-Pro.local]=l
-    [RobertFajtasMBP]=l
+    [KhaledSami-MacBook-Air.local]=l
+    [KhaledSami]=l
     [default]=KEY
   )
   # no surrounding single or double quotes here
