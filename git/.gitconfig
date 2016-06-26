@@ -7,7 +7,7 @@
 	a = add
 	co = checkout
 	c = commit -m 
-	d = --no-pager diff
+	diff = --no-pager diff
 	s = !~/bin/gitstatus.sh
 	com = !~/bin/gitcheckout.sh -m
 	ac = !~/bin/gitadd.sh -m
