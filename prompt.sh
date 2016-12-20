@@ -6,9 +6,14 @@
 #   brew install bash
 #   sudo mv /bin/bash /bin/bash.bak
 #   sudo ln -s /usr/local/Cellar/bash/4.2.45/bin/bash /bin/bash
+#   if bash_profile already not created => sudo ln -s /Users/khaledsa/.custom/.bash_profile .bash_profile
+#   else => open your .bash_profile (type in terminal: open ~/.bash_profile ) and add this line "source {path to .custom folder}/.custom/prompt.sh"
+#   sudo ln -s /Users/khaledsa/.custom/.gitconfig .gitconfig
+#   sudo ln -s /Users/khaledsa/.custom/.gitignore .gitignore
+
 
 # initializing color variables
-. ~/.custom/bin/initcolors.sh
+. ~/.custom/initcolors.sh
 
 printPrompt() {
   local EXITCODE=${?#0}
@@ -52,12 +57,20 @@ printPrompt() {
     fi
   }
 
+  # # specify prompt background color per user, not used currently
+  # declare -A PROMPT_BG_COLORS
+  # PROMPT_BG_COLORS=(
+  #   [khaledsa]=""
+  #   [root]=${BG_RED}
+  #   [default]=""
+  # )
+  # COLOR_PROMPT_BG='$(getValue PROMPT_BG_COLORS ${USER})'
   COLOR_PROMPT_BG=""
 
   # the <user>
   COMMAND_USER='${USER}'
   declare -A COLORS_USER=(
-    [KhaledSami]=${FG_GREEN}
+    [magdi]=${FG_GREEN}
     [jenkins]=${FG_PURPLE}
     [default]=${FG_CYAN}
   )
@@ -71,16 +84,14 @@ printPrompt() {
   # specify color for for each <host> plus for the 'default'
   declare -A COLORS_HOST=(
     [localhost]=${FG_CYAN}
-    [KhaledSami]=${FG_CYAN}
-    [KhaledSami-MacBook-Air.local]=${FG_CYAN}
     [default]=${FG_LIGHT_PURPLE}
   )
   # abbreviation of each <host> for the tab name of konsole, plus ['default']=KEY
   declare -A HOST_ABBREVIATION=(
     [localhost]=l
-    [KhaledSami-MacBook-Air.local]=l
-    [KhaledSami]=l
     [default]=KEY
+    [mohameds-mbp.bp.prezi.private]=mac
+    [Mohameds-MacBook-Pro.local]=mac
   )
   # no surrounding single or double quotes here
   COMMAND_HOST='$(getValue HOST_ABBREVIATION ${HOSTNAME})'
@@ -182,13 +193,6 @@ printPrompt() {
       else
         echo -n "${branch}"
       fi
-      branchSha="${branch}"
-
-      if [[ "${branch}" =~ 'HEAD detached at' ]]
-      then
-        branchSha=$(git log -1 --oneline --abbrev=5)
-        branchSha="${branchSha:0:5}"
-      fi
 
       # staged files
       git diff --quiet --cached --exit-code
@@ -208,7 +212,7 @@ printPrompt() {
        changeIndicator="${changeIndicator}?"
       fi
       # unpushed commits
-      if [[ -n $(git log ${branchSha} --not --remotes --oneline) ]]
+      if [[ -n $(git log ${branch} --not --remotes --oneline) ]]
       then
        changeIndicator="${changeIndicator}!"
       fi

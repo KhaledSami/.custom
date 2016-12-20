@@ -1,0 +1,28 @@
+[user]
+	email = khaledsa@amazon.com
+	name = Khaled
+[color]
+	ui = true
+[alias]
+	a = add
+	co = checkout
+	c = commit
+	d = --no-pager diff
+	s = !~/bin/gitstatus.sh
+	com = !~/bin/gitcheckout.sh -m
+	am = !~/bin/gitadd.sh -m
+	au = !~/bin/gitadd.sh -u
+	ds = !~/bin/gitdiff.sh -s
+	dm = !~/bin/gitdiff.sh -m
+	du = !~/bin/gitdiff.sh -u
+	da = !~/bin/gitdiff.sh -a
+	pop = stash pop
+	nstash = stash save
+
+[core]
+	editor = subl
+	excludesfile = /Users/khaledsa/.custom/.gitignore
+
+[amazon]
+	append-cr-url = true
+	pull-request-by-default = true
